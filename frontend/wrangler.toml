@@ -1,0 +1,23 @@
+name = "EDU-Email"
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "EDU-Email"
+
+[env.preview]
+name = "EDU-Email-preview"
+
+# 如果需要自定义域名，可以添加以下配置
+# [env.production.routes]
+# pattern = "your-domain.com/*"
+# zone_name = "your-domain.com" 
+
+# Cloudflare Analytics (可选)
+# VITE_CF_WEB_ANALY_TOKEN=your-analytics-token
+
+# Google AdSense (可选)
+# VITE_GOOGLE_AD_CLIENT=your-ad-client
+# VITE_GOOGLE_AD_SLOT=your-ad-slot
+
+# Telegram 集成 (可选)
+# VITE_IS_TELEGRAM=true 
