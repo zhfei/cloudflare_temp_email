@@ -445,7 +445,7 @@ const openUrl = (url) => {
         <div style="text-align: center; padding: 20px">
             <n-space justify="center">
                 <n-text depth="3">
-                    {{ t('copyright') }} © 2023-{{ new Date().getFullYear() }}
+                    {{ t('copyright') }} © 2025-{{ new Date().getFullYear() }}
                 </n-text>
                 <n-text depth="3">
                     <div v-html="openSettings.copyright"></div>

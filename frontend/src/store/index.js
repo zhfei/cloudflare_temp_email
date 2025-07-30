@@ -29,7 +29,7 @@ export const useGlobalState = createGlobalState(
             defaultDomains: [],
             /** @type {Array<{label: string, value: string}>} */
             domains: [],
-            copyright: 'Dream Hunter',
+            copyright: 'EDU Temp Email',
             cfTurnstileSiteKey: '',
             enableWebhook: false,
             isS3Enabled: false,
