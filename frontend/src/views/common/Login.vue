@@ -42,7 +42,7 @@ const {
     showAddressCredential, userSettings
 } = useGlobalState()
 
-const tabValue = ref('signin')
+const tabValue = ref('register')
 const credential = ref('')
 const emailName = ref("")
 const emailDomain = ref("")
@@ -203,11 +203,20 @@ const showNewAddressTab = computed(() => {
     return openSettings.value.enableUserCreateEmail;
 });
 
+const defaultTabValue = computed(() => {
+    return showNewAddressTab.value ? 'register' : 'signin';
+});
+
 onMounted(async () => {
     if (!openSettings.value.domains || openSettings.value.domains.length === 0) {
         await api.getOpenSettings(message, notification);
     }
     emailDomain.value = domainsOptions.value ? domainsOptions.value[0]?.value : "";
+    
+    // Set default tab value after settings are loaded
+    if (openSettings.value.fetched) {
+        tabValue.value = defaultTabValue.value;
+    }
 });
 </script>
 
@@ -217,25 +226,6 @@ onMounted(async () => {
             <span>{{ t('bindUserInfo') }}</span>
         </n-alert>
         <n-tabs v-if="openSettings.fetched" v-model:value="tabValue" size="large" justify-content="space-evenly">
-            <n-tab-pane name="signin" :tab="loginAndBindTag">
-                <n-form>
-                    <n-form-item-row :label="t('credential')" required>
-                        <n-input v-model:value="credential" type="textarea" :autosize="{ minRows: 3 }" />
-                    </n-form-item-row>
-                    <n-button @click="login" :loading="loading" type="primary" block secondary strong>
-                        <template #icon>
-                            <n-icon :component="EmailOutlined" />
-                        </template>
-                        {{ loginAndBindTag }}
-                    </n-button>
-                    <n-button v-if="showNewAddressTab" @click="tabValue = 'register'" block secondary strong>
-                        <template #icon>
-                            <n-icon :component="NewLabelOutlined" />
-                        </template>
-                        {{ t('getNewEmail') }}
-                    </n-button>
-                </n-form>
-            </n-tab-pane>
             <n-tab-pane v-if="showNewAddressTab" name="register" :tab="t('getNewEmail')">
                 <n-spin :show="generateNameLoading">
                     <n-form>
@@ -267,11 +257,24 @@ onMounted(async () => {
                     </n-form>
                 </n-spin>
             </n-tab-pane>
-            <n-tab-pane name="help" :tab="t('help')">
-                <n-alert :show-icon="false" :bordered="false">
-                    <span>{{ t('pleaseGetNewEmail') }}</span>
-                </n-alert>
-                <AdminContact />
+            <n-tab-pane name="signin" :tab="loginAndBindTag">
+                <n-form>
+                    <n-form-item-row :label="t('credential')" required>
+                        <n-input v-model:value="credential" type="textarea" :autosize="{ minRows: 3 }" />
+                    </n-form-item-row>
+                    <n-button @click="login" :loading="loading" type="primary" block secondary strong>
+                        <template #icon>
+                            <n-icon :component="EmailOutlined" />
+                        </template>
+                        {{ loginAndBindTag }}
+                    </n-button>
+                    <n-button v-if="showNewAddressTab" @click="tabValue = 'register'" block secondary strong>
+                        <template #icon>
+                            <n-icon :component="NewLabelOutlined" />
+                        </template>
+                        {{ t('getNewEmail') }}
+                    </n-button>
+                </n-form>
             </n-tab-pane>
         </n-tabs>
     </div>
