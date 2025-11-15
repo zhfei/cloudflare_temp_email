@@ -6,7 +6,7 @@ import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useIsMobile } from '../utils/composables'
 import {
     DarkModeFilled, LightModeFilled, MenuFilled,
-    AdminPanelSettingsFilled, CodeFilled, BookFilled, SecurityFilled
+    AdminPanelSettingsFilled, CodeFilled, BookFilled, SecurityFilled, SchoolFilled
 } from '@vicons/material'
 import { GithubAlt, Language, User, Home } from '@vicons/fa'
 
@@ -29,6 +29,7 @@ const showMobileMenu = ref(false)
 const menuValue = computed(() => {
     if (route.path.includes("user")) return "user";
     if (route.path.includes("admin")) return "admin";
+    if (route.path.includes("education")) return "education";
     if (route.path.includes("blog")) return "blog";
     if (route.path.includes("tutorials")) return "tutorials";
     if (route.path.includes("security")) return "security";
@@ -63,6 +64,7 @@ const { locale, t } = useI18n({
             menu: 'Menu',
             user: 'User',
             ok: 'OK',
+            education: 'Education',
             blog: 'Blog',
             tutorials: 'Tutorials',
             security: 'Security'
@@ -77,6 +79,7 @@ const { locale, t } = useI18n({
             menu: '菜单',
             user: '用户',
             ok: '确定',
+            education: '教育优惠',
             blog: '博客',
             tutorials: '教程',
             security: '安全'
@@ -104,6 +107,24 @@ const menuOptions = computed(() => [
                 icon: () => h(NIcon, { component: Home })
             }),
         key: "home"
+    },
+    {
+        label: () => h(NButton,
+            {
+                text: true,
+                size: "small",
+                type: menuValue.value == "education" ? "primary" : "default",
+                style: "width: 100%",
+                onClick: async () => {
+                    await router.push(getRouterPathWithLang('/education', locale.value));
+                    showMobileMenu.value = false;
+                }
+            },
+            {
+                default: () => t('education'),
+                icon: () => h(NIcon, { component: SchoolFilled })
+            }),
+        key: "education"
     },
     {
         label: () => h(NButton,
@@ -258,7 +279,7 @@ const menuOptions = computed(() => [
                 icon: () => h(NIcon, { component: GithubAlt })
             }
         ),
-        show: openSettings.value?.showGithub,
+        show: false,
         key: "github"
     }
 ]);

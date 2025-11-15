@@ -36,6 +36,11 @@ const router = createRouter({
             component: () => import('../views/telegram/Mail.vue')
         },
         {
+            path: '/education',
+            alias: "/:lang/education",
+            component: () => import('../views/content/Education.vue')
+        },
+        {
             path: '/blog',
             alias: "/:lang/blog",
             component: () => import('../views/content/Blog.vue')
