@@ -6,7 +6,7 @@ import { useRoute, useRouter, RouterLink } from 'vue-router'
 import { useIsMobile } from '../utils/composables'
 import {
     DarkModeFilled, LightModeFilled, MenuFilled,
-    AdminPanelSettingsFilled
+    AdminPanelSettingsFilled, CodeFilled, BookFilled, SecurityFilled
 } from '@vicons/material'
 import { GithubAlt, Language, User, Home } from '@vicons/fa'
 
@@ -29,6 +29,9 @@ const showMobileMenu = ref(false)
 const menuValue = computed(() => {
     if (route.path.includes("user")) return "user";
     if (route.path.includes("admin")) return "admin";
+    if (route.path.includes("blog")) return "blog";
+    if (route.path.includes("tutorials")) return "tutorials";
+    if (route.path.includes("security")) return "security";
     return "home";
 });
 
@@ -60,6 +63,9 @@ const { locale, t } = useI18n({
             menu: 'Menu',
             user: 'User',
             ok: 'OK',
+            blog: 'Blog',
+            tutorials: 'Tutorials',
+            security: 'Security'
         },
         zh: {
             title: 'EDU 临时邮件',
@@ -71,6 +77,9 @@ const { locale, t } = useI18n({
             menu: '菜单',
             user: '用户',
             ok: '确定',
+            blog: '博客',
+            tutorials: '教程',
+            security: '安全'
         }
     }
 });
@@ -95,6 +104,60 @@ const menuOptions = computed(() => [
                 icon: () => h(NIcon, { component: Home })
             }),
         key: "home"
+    },
+    {
+        label: () => h(NButton,
+            {
+                text: true,
+                size: "small",
+                type: menuValue.value == "blog" ? "primary" : "default",
+                style: "width: 100%",
+                onClick: async () => {
+                    await router.push(getRouterPathWithLang('/blog', locale.value));
+                    showMobileMenu.value = false;
+                }
+            },
+            {
+                default: () => t('blog'),
+                icon: () => h(NIcon, { component: CodeFilled })
+            }),
+        key: "blog"
+    },
+    {
+        label: () => h(NButton,
+            {
+                text: true,
+                size: "small",
+                type: menuValue.value == "tutorials" ? "primary" : "default",
+                style: "width: 100%",
+                onClick: async () => {
+                    await router.push(getRouterPathWithLang('/tutorials', locale.value));
+                    showMobileMenu.value = false;
+                }
+            },
+            {
+                default: () => t('tutorials'),
+                icon: () => h(NIcon, { component: BookFilled })
+            }),
+        key: "tutorials"
+    },
+    {
+        label: () => h(NButton,
+            {
+                text: true,
+                size: "small",
+                type: menuValue.value == "security" ? "primary" : "default",
+                style: "width: 100%",
+                onClick: async () => {
+                    await router.push(getRouterPathWithLang('/security', locale.value));
+                    showMobileMenu.value = false;
+                }
+            },
+            {
+                default: () => t('security'),
+                icon: () => h(NIcon, { component: SecurityFilled })
+            }),
+        key: "security"
     },
     {
         label: () => h(
