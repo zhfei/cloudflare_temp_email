@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /user/
+Disallow: /api/
+Disallow: /telegram_mail
+
+Sitemap: https://mail.awsl.uk/sitemap.xml

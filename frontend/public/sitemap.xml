@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://mail.awsl.uk/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mail.awsl.uk/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mail.awsl.uk/en/" />
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mail.awsl.uk/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mail.awsl.uk/en/blog" />
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/resources</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mail.awsl.uk/resources" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mail.awsl.uk/en/resources" />
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/legal/privacy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mail.awsl.uk/legal/privacy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mail.awsl.uk/en/legal/privacy" />
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/legal/terms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mail.awsl.uk/legal/terms" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mail.awsl.uk/en/legal/terms" />
+  </url>
+  <!-- Blog posts -->
+  <url>
+    <loc>https://mail.awsl.uk/blog/cloudflare-workers-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/blog/rust-wasm-email-parsing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/blog/s3-attachment-storage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/blog/email-security-dkim-spf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/blog/smtp-imap-proxy-setup</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mail.awsl.uk/blog/privacy-protection-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

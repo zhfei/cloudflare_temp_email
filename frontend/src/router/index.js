@@ -36,6 +36,31 @@ const router = createRouter({
             component: () => import('../views/telegram/Mail.vue')
         },
         {
+            path: '/blog',
+            alias: "/:lang/blog",
+            component: () => import('../views/blog/BlogList.vue')
+        },
+        {
+            path: '/blog/:id',
+            alias: "/:lang/blog/:id",
+            component: () => import('../views/blog/BlogPost.vue')
+        },
+        {
+            path: '/legal/privacy',
+            alias: "/:lang/legal/privacy",
+            component: () => import('../views/legal/PrivacyPolicy.vue')
+        },
+        {
+            path: '/legal/terms',
+            alias: "/:lang/legal/terms",
+            component: () => import('../views/legal/TermsOfService.vue')
+        },
+        {
+            path: '/resources',
+            alias: "/:lang/resources",
+            component: () => import('../views/resources/Resources.vue')
+        },
+        {
             name: 'not-found',
             path: '/:pathMatch(.*)*',
             redirect: '/'

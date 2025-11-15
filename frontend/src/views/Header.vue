@@ -29,6 +29,7 @@ const showMobileMenu = ref(false)
 const menuValue = computed(() => {
     if (route.path.includes("user")) return "user";
     if (route.path.includes("admin")) return "admin";
+    if (route.path.includes("blog")) return "blog";
     return "home";
 });
 
@@ -60,6 +61,7 @@ const { locale, t } = useI18n({
             menu: 'Menu',
             user: 'User',
             ok: 'OK',
+            blog: 'Blog',
         },
         zh: {
             title: 'Cloudflare 临时邮件',
@@ -71,6 +73,7 @@ const { locale, t } = useI18n({
             menu: '菜单',
             user: '用户',
             ok: '确定',
+            blog: '博客',
         }
     }
 });
@@ -95,6 +98,25 @@ const menuOptions = computed(() => [
                 icon: () => h(NIcon, { component: Home })
             }),
         key: "home"
+    },
+    {
+        label: () => h(NButton,
+            {
+                text: true,
+                size: "small",
+                type: menuValue.value == "blog" ? "primary" : "default",
+                style: "width: 100%",
+                onClick: async () => {
+                    await router.push(getRouterPathWithLang('/blog', locale.value));
+                    showMobileMenu.value = false;
+                }
+            },
+            {
+                default: () => locale.value === 'zh' ? '博客' : 'Blog',
+                icon: () => h(NIcon, { component: () => h('span', '📝') })
+            }),
+        key: "blog",
+        show: !isTelegram.value
     },
     {
         label: () => h(
