@@ -5,6 +5,7 @@ import { useRoute } from 'vue-router'
 
 import { useGlobalState } from '../store'
 import { api } from '../api'
+import { getRouterPathWithLang } from '../utils'
 
 import AddressBar from './index/AddressBar.vue';
 import MailBox from '../components/MailBox.vue';
@@ -21,6 +22,7 @@ import SimpleIndex from './index/SimpleIndex.vue';
 const { loading, settings, openSettings, indexTab, globalTabplacement, useSimpleIndex } = useGlobalState()
 const message = useMessage()
 const route = useRoute()
+const { locale } = useI18n()
 
 const SendMail = defineAsyncComponent(() => {
   loading.value = true;
@@ -42,9 +44,15 @@ const { t } = useI18n({
       saveToS3Success: 'save to s3 success',
       webhookSettings: 'Webhook Settings',
       query: 'Query',
+      disclaimerTitle: 'Important Disclaimer',
+      disclaimerText: 'This service is a third-party temporary email tool and is not affiliated with any educational institutions. Any .edu email addresses provided are temporary and for educational/testing purposes only. We are not responsible for any misuse of these addresses. Please use this service responsibly and in compliance with applicable laws and regulations.',
+      readTerms: 'Read Terms of Service'
     },
     zh: {
       mailbox: '收件箱',
+      disclaimerTitle: '重要免责声明',
+      disclaimerText: '本服务是第三方临时邮箱工具，与任何教育机构无关。提供的任何 .edu 邮箱地址都是临时的，仅用于教育/测试目的。我们不对这些地址的任何滥用行为负责。请负责任地使用本服务，并遵守适用的法律法规。',
+      readTerms: '阅读服务条款',
       sendbox: '发件箱',
       sendmail: '发送邮件',
       auto_reply: '自动回复',
@@ -131,6 +139,20 @@ onMounted(() => {
       <SimpleIndex />
     </div>
     <div v-else>
+      <!-- 免责声明 -->
+      <n-card :bordered="false" embedded style="margin-bottom: 10px;">
+        <n-alert type="warning" :show-icon="true" :bordered="true">
+          <template #header>
+            <strong>{{ t('disclaimerTitle') }}</strong>
+          </template>
+          <p>{{ t('disclaimerText') }}</p>
+          <p style="margin-top: 10px;">
+            <router-link :to="getRouterPathWithLang('/legal/terms', locale)" style="color: var(--n-warning-color);">
+              {{ t('readTerms') }}
+            </router-link>
+          </p>
+        </n-alert>
+      </n-card>
       <AddressBar />
       <n-tabs v-if="settings.address" type="card" v-model:value="indexTab" :placement="globalTabplacement">
         <n-tab-pane name="mailbox" :tab="t('mailbox')">
