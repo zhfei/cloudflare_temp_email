@@ -8,7 +8,7 @@
         </div>
         <n-text depth="3">{{ t('studentDiscountsDesc') }}</n-text>
       </template>
-      
+      <AdsterraNativeBanner />
       <n-space vertical size="large">
         <n-collapse accordion>
           <n-collapse-item 
@@ -79,6 +79,7 @@ import {
   StorageFilled,
   SecurityFilled
 } from '@vicons/material'
+import AdsterraNativeBanner from '../../components/AdsterraNativeBanner.vue';
 
 const { t } = useI18n({
     messages: {

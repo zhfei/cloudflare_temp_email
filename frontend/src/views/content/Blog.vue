@@ -5,7 +5,7 @@
         <h1>{{ t('technicalBlog') }}</h1>
         <n-text depth="3">{{ t('blogSubtitle') }}</n-text>
       </template>
-
+      <AdsterraNativeBanner />
       <n-space vertical size="large">
         <article v-for="article in articles" :key="article.id" class="blog-article">
           <n-card>
@@ -33,6 +33,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { getRouterPathWithLang } from '../../utils'
+import AdsterraNativeBanner from '../../components/AdsterraNativeBanner.vue';
 
 const router = useRouter()
 const { locale } = useI18n()

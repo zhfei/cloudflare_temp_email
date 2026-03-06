@@ -8,7 +8,6 @@ import { useIsMobile } from '../utils/composables'
 import { processItem, getDownloadEmlUrl } from '../utils/email-parser'
 import { utcToLocalDate } from '../utils';
 import ShadowHtmlComponent from "./ShadowHtmlComponent.vue";
-import AdsterraNativeBanner from "./AdsterraNativeBanner.vue";
 
 const message = useMessage()
 const isMobile = useIsMobile()
@@ -411,7 +410,6 @@ onBeforeUnmount(() => {
                 </n-thing>
               </n-list-item>
             </n-list>
-            <AdsterraNativeBanner />
           </div>
         </template>
         <template #2>
@@ -493,7 +491,6 @@ onBeforeUnmount(() => {
           {{ t('refresh') }}
         </n-button>
       </n-space>
-      <AdsterraNativeBanner />
       <div style="overflow: auto; height: 80vh;">
         <n-list hoverable clickable>
           <n-list-item v-for="row in data" v-bind:key="row.id" @click="() => clickRow(row)">

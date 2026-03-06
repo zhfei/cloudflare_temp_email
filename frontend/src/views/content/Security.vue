@@ -5,7 +5,7 @@
         <h1>{{ t('privacyAndSecurity') }}</h1>
         <n-text depth="3">{{ t('securitySubtitle') }}</n-text>
       </template>
-
+      <AdsterraNativeBanner />
       <n-space vertical size="large">
         <section>
           <h2>{{ t('emailSecurity') }}</h2>
@@ -145,6 +145,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { CheckmarkCircle } from '@vicons/ionicons5'
 import { useGlobalState } from '../../store'
+import AdsterraNativeBanner from '../../components/AdsterraNativeBanner.vue';
 
 const { t } = useI18n({
   messages: {

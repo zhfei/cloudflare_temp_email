@@ -5,7 +5,7 @@
         <h1>{{ t('tutorials') }}</h1>
         <n-text depth="3">{{ t('tutorialsSubtitle') }}</n-text>
       </template>
-
+      <AdsterraNativeBanner />
       <n-space vertical size="large">
         <n-collapse accordion>
           <n-collapse-item 
@@ -25,6 +25,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import AdsterraNativeBanner from '../../components/AdsterraNativeBanner.vue';
 
 const { t } = useI18n({
   messages: {
