@@ -15,7 +15,18 @@
   <link rel="icon" href="/logo.png" sizes="any">
   <link rel="apple-touch-icon" href="/logo.png">
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
-  <script src="https://pl28858184.effectivegatecpm.com/56/3b/0f/563b0fbf3f5f5c1d1badddbf5e66de41.js"></script>
+  <script>
+    (function () {
+      var domain = window.location.hostname;
+      var scriptUrl = 'https://pl28858184.effectivegatecpm.com/56/3b/0f/563b0fbf3f5f5c1d1badddbf5e66de41.js'; // Default: bise.edu.kg
+      if (domain === 'mail.bise.edu.kg') {
+        scriptUrl = 'https://pl28859153.effectivegatecpm.com/32/52/ee/3252eef9a91d85dbbe432dddfddba17a.js';
+      }
+      var s = document.createElement('script');
+      s.src = scriptUrl;
+      document.head.appendChild(s);
+    })();
+  </script>
 </head>
 
 <body>
