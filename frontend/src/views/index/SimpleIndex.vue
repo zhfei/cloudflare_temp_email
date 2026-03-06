@@ -18,6 +18,7 @@ import AccountSettings from './AccountSettings.vue'
 import { processItem } from '../../utils/email-parser'
 import { utcToLocalDate } from '../../utils'
 import ShadowHtmlComponent from '../../components/ShadowHtmlComponent.vue'
+import AdsterraNativeBanner from '../../components/AdsterraNativeBanner.vue'
 
 const { jwt, settings, useSimpleIndex, useUTCDate, showAddressCredential } = useGlobalState()
 const message = useMessage()
@@ -176,6 +177,8 @@ onMounted(async () => {
                 @close="showAccountSettingsCard = false" :title="t('accountSettings')">
                 <AccountSettings />
             </n-card>
+
+            <AdsterraNativeBanner />
 
             <n-card :bordered="false" embedded style="text-align: left;">
 

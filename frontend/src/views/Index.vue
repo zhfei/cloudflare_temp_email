@@ -16,6 +16,7 @@ import Appearance from './common/Appearance.vue';
 import Webhook from './index/Webhook.vue';
 import Attachment from './index/Attachment.vue';
 import About from './common/About.vue';
+import AdsterraNativeBanner from '../components/AdsterraNativeBanner.vue';
 
 import SimpleIndex from './index/SimpleIndex.vue';
 
@@ -154,6 +155,7 @@ onMounted(() => {
         </n-alert>
       </n-card>
       <AddressBar />
+      <AdsterraNativeBanner />
       <n-tabs v-if="settings.address" type="card" v-model:value="indexTab" :placement="globalTabplacement">
         <n-tab-pane name="mailbox" :tab="t('mailbox')">
           <div v-if="showMailIdQuery" style="margin-bottom: 10px;">
